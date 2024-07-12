@@ -1,186 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Web Application</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-        input[type="text"], input[type="password"], textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: #28a745;
-            color: #fff;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        .posts```html
-            margin-top: 20px;
-        }
-        .post {
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f5f5f5;
+      }
+      .container {
+          max-width: 600px;
+          margin: auto;
+          padding: 20px;
+          background-color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+      }
+      h1 {
+          text-align: center;
+          color: #333;
+      }
+      form {
+          margin-bottom: 20px;
+      }
+      label {
+          display: block;
+          margin-bottom: 8px;
+      }
+      input[type="text"], input[type="password"], textarea {
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
+      button {
+          width: 100%;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          background-color: #28a745;
+          color: #fff;
+          font-size: 16px;
+      }
+      button:hover {
+          background-color: #218838;
+      }
+      .posts```html
+          margin-top: 20px;
+      }
+      .post {
+          padding: 10px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>My Web Application</h1>
-        
-        <h2>Sign Up</h2>
-        <form id="signup-form">
-            <label for="signup-email">Email:</label>
-            <input type="text" id="signup-email" name="email" required>
-            
-            <label for="signup-password">Password:</label>
-            <input type="password" id="signup-password" name="password" required>
-            
-            <button type="submit">Sign Up</button>
-        </form>
+      <h1>My Web Application</h1>
 
-        <h2>Login</h2>
-        <form id="login-form">
-            <label for="login-email">Email:</label>
-            <input type="text" id="login-email" name="email" required>
-            
-            <label for="login-password">Password:</label>
-            <input type="password" id="login-password" name="password" required>
-            
-            <button type="submit">Login</button>
-        </form>
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <label for="signup-email">Email:</label>
+        <input type="text" id="signup-email" name="email" required />
 
-        <h2>Add Post</h2>
-        <form id="add-post-form">
-            <label for="post-text">Post Text:</label>
-            <textarea id="post-text" name="text" required></textarea>
-            
-            <button type="submit">Add Post</button>
-        </form>
+        <label for="signup-password">Password:</label>
+        <input type="password" id="signup-password" name="password" required />
 
-        <h2>Posts</h2>
-        <div id="posts" class="posts"></div>
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="login-email">Email:</label>
+        <input type="text" id="login-email" name="email" required />
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" name="password" required />
+
+        <button type="submit">Login</button>
+      </form>
+
+      <h2>Add Post</h2>
+      <form id="add-post-form">
+        <label for="post-text">Post Text:</label>
+        <textarea id="post-text" name="text" required></textarea>
+
+        <button type="submit">Add Post</button>
+      </form>
+
+      <h2>Posts</h2>
+      <div id="posts" class="posts"></div>
     </div>
 
     <script>
-        const apiUrl = 'http://localhost:8000';
+      const apiUrl = "http://localhost:8000";
 
-        document.getElementById('signup-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-            const response = await fetch(`${apiUrl}/signup`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
-            const data = await response.json();
-            alert(data.message);
+      document
+        .getElementById("signup-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("signup-email").value;
+          const password = document.getElementById("signup-password").value;
+          const response = await fetch(`${apiUrl}/signup`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          });
+          const data = await response.json();
+          alert(data.message);
         });
 
-        document.getElementById('login-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            const response = await fetch(`${apiUrl}/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
-            const data = await response.json();
-            if (data.access_token) {
-                localStorage.setItem('token', data.access_token);
-                alert('Login successful!');
-            } else {
-                alert('Login failed!');
-            }
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("login-email").value;
+          const password = document.getElementById("login-password").value;
+          const response = await fetch(`${apiUrl}/login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          });
+          const data = await response.json();
+          if (data.access_token) {
+            localStorage.setItem("token", data.access_token);
+            alert("Login successful!");
+          } else {
+            alert("Login failed!");
+          }
         });
 
-        document.getElementById('add-post-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const text = document.getElementById('post-text').value;
-            const token = localStorage.getItem('token');
-            const response = await fetch(`${apiUrl}/addpost`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ text })
-            });
-            const data = await response.json();
-            if (data.id) {
-                alert('Post added successfully!');
-                loadPosts();
-            } else {
-                alert('Failed to add post!');
-            }
+      document
+        .getElementById("add-post-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const text = document.getElementById("post-text").value;
+          const token = localStorage.getItem("token");
+          const response = await fetch(`${apiUrl}/addpost`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ text }),
+          });
+          const data = await response.json();
+          if (data.id) {
+            alert("Post added successfully!");
+            loadPosts();
+          } else {
+            alert("Failed to add post!");
+          }
         });
 
-        async function loadPosts() {
-            const token = localStorage.getItem('token');
-            const response = await fetch(`${apiUrl}/getposts`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            const data = await response.json();
-            const postsContainer = document.getElementById('posts');
-            postsContainer.innerHTML = '';
-            data.forEach(post => {
-                const postDiv = document.createElement('div');
-                postDiv.classList.add('post');
-                postDiv.textContent = post.text;
-                postsContainer.appendChild(postDiv);
-            });
+      async function loadPosts() {
+        const token = localStorage.getItem("token");
+        const response = await fetch(`${apiUrl}/getposts`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+        const postsContainer = document.getElementById("posts");
+        postsContainer.innerHTML = "";
+        data.forEach((post) => {
+          const postDiv = document.createElement("div");
+          postDiv.classList.add("post");
+          postDiv.textContent = post.text;
+          postsContainer.appendChild(postDiv);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("token");
+        if (token) {
+          loadPosts();
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const token = localStorage.getItem('token');
-            if (token) {
-                loadPosts();
-            }
-        });
+      });
     </script>
-</body>
+  </body>
 </html>
